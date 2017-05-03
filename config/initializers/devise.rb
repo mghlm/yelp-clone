@@ -7,9 +7,9 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '9f14f4c2f96d54bde3cd8503c7bae8139fe727d2820539b2dfa2e276c82b399562f328210e4093a6059b4072c9a2979cd09b4030fe3aea19731f21aa2164160c'
-
-  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"],
-                            callback_url: "http://localhost:3000/users/auth/facebook/callback", :scope => 'email', :info_fields => 'name,email' 
+  require 'omniauth'
+  require 'omniauth-facebook'
+  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"], callback_url: "http://localhost:3000/users/auth/facebook/callback", :scope => 'email', :info_fields => 'name,email'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,

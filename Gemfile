@@ -54,6 +54,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails', groups: [:development, :test]
   gem 'dotenv'
+  gem 'omniauth'
   gem 'omniauth-facebook'
 end
 
