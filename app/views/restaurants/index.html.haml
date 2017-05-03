@@ -10,4 +10,5 @@
 - else
   No restaurants yet!
 
-= link_to 'Add a restaurant', new_restaurant_path(@restaurant)
+- if user_signed_in?
+  = link_to 'Add a restaurant', new_restaurant_path(@restaurant)
