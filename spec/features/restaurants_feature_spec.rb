@@ -96,18 +96,18 @@ feature 'restaurants' do
       expect(page).to have_content 'Restaurant deleted successfully'
     end
 
-    # scenario 'can only be deleted by the user who created it' do
-    #   sign_up
-    #   click_link('Add a restaurant')
-    #   fill_in('Name', with: "Subway")
-    #   fill_in('Description', with: "Sandwiches")
-    #   click_button('Create Restaurant')
-    #   click_link('Sign out')
-    #   sign_up_user2
-    #   click_link('Delete Subway')
-    #   expect(page).to have_content("You can only delete your own restaurant")
-    #   expect(page).to have_content("Sandwiches")
-    # end
+    scenario 'can only be deleted by the user who created it' do
+      sign_up
+      click_link('Add a restaurant')
+      fill_in('Name', with: "Subway")
+      fill_in('Description', with: "Sandwiches")
+      click_button('Create Restaurant')
+      click_link('Sign out')
+      sign_up_user2
+      click_link('Delete Subway')
+      expect(page).to have_content("You can only delete your own restaurant")
+      expect(page).to have_content("Sandwiches")
+    end
 
 
   end
