@@ -1,0 +1,31 @@
+<h1>Listing restaurants</h1>
+
+<% if user_signed_in? %>
+  <%= link_to 'Add a restaurant', new_restaurant_path %>
+<% end %>
+
+<% if @restaurants.empty? %>
+<p>No restaurants yet<p>
+<% end %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+  <% @restaurants.each do |restaurant| %>
+  <tr>
+    <td><%= restaurant.name %></td>
+    <td><%= restaurant.description %></td>
+    <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+    <td><%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %></td>
+    <td><%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %></td>
+    <td><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %></td>
+    <% restaurant.reviews.each do |review| %>
+    <td><%= review.thoughts %></td>
+    <td><%= review.rating %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
