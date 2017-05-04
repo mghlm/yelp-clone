@@ -24,9 +24,6 @@ feature 'restaurants' do
       visit '/restaurants'
       user = User.first
       user.restaurants.create(name: 'KFC')
-      puts "======"
-      puts user.restaurants.name
-      puts "======"
       visit '/restaurants'
       expect(page).to have_content('KFC')
       expect(page).not_to have_content('No restaurants yet')

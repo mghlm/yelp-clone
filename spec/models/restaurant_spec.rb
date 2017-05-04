@@ -17,6 +17,8 @@ describe Restaurant, type: :model do
     restaurant = user.restaurants.create(name: "Moe's Tavern")
     expect(restaurant).to have(1).error_on(:name)
   end
+
+
 end
 
 
