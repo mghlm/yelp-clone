@@ -4,6 +4,8 @@
   <%= link_to 'Add a restaurant', new_restaurant_path %>
 <% end %>
 
+<%= !!current_user %>
+
 <% if @restaurants.empty? %>
 <p>No restaurants yet<p>
 <% end %>
@@ -21,8 +23,10 @@
     <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
     <td><%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %></td>
     <td><%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %></td>
-    <% unless current_user.has_reviewed? restaurant %>
-      <td><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %></td>
+    <% if current_user %>
+      <% unless current_user.has_reviewed?(restaurant) %>
+        <td><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %></td>
+      <% end %>
     <% end %>
     <% restaurant.reviews.each do |review| %>
     <td><%= review.thoughts %></td>

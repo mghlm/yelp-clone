@@ -44,6 +44,7 @@ group :development, :test do
   gem 'haml'
   gem 'rspec-collection_matchers'
   gem 'shoulda'
+  gem 'pry'
 end
 
 group :development do
